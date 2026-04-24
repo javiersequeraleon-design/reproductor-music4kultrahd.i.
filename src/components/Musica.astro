@@ -1,0 +1,28 @@
+---
+const song = Astro.props.song;
+---
+
+<div class="flex flex-col gap-3 w-[15%] group cursor-pointer" id={song._id}>
+    <div
+        class="aspect-square rounded-3xl overflow-hidden shadow-sm group-hover:shadow-md transition-shadow"
+    >
+        <img
+            src={song.album.image.url}
+            alt=""
+            class="w-full h-full object-cover"
+        />
+    </div>
+    <div class="flex flex-col items-center text-center">
+        <div class="text-[13px] font-bold">{song.title}</div>
+        <p class="text-zinc-400 text-[11px]">{song.author.name}</p>
+    </div>
+</div>
+
+<script define:vars={{ song }}>
+    document.getElementById(song._id).addEventListener("click", () => {
+        const event = new CustomEvent("playSong", { 
+            detail: { song }
+         });
+        window.dispatchEvent(event);
+    });
+</script>
