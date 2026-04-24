@@ -2,6 +2,8 @@
 import Welcome from "../components/Welcome.astro";
 import Layout from "../layouts/Layout.astro";
 import Musica from "../components/Musica.astro";
+import TarjetaMusica from "../components/TarjetaMusica.astro";
+import Sonando from "../components/Sonando.astro";
 
 const response = await fetch("https://api.institutoalfa.org/api/songs");
 const { songs } = await response.json();
@@ -22,47 +24,8 @@ const { songs } = await response.json();
 			</div>
 
 			<div class="flex flex-row gap-6 mt-2">
-				<div
-					class="relative w-[450px] h-[260px] rounded-[32px] overflow-hidden shadow-2xl shadow-indigo-100"
-				>
-					<img
-						src="/parte1.png"
-						alt="Meditación"
-						class="w-full h-full object-cover"
-					/>
-
-					<div
-						class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent p-8 flex flex-col justify-end"
-					>
-						<div
-							class="text-white/70 text-[10px] uppercase tracking-widest font-bold mb-1"
-						>
-							Escuchando Ahora
-						</div>
-						<div class="text-3xl font-bold text-white mb-1">
-							Meditación de Medianoche
-						</div>
-
-						<div
-							class="flex items-center gap-2 text-white/80 text-sm"
-						>
-							<div class="inline">Arlo Parks</div>
-							<div class="opacity-40">•</div>
-							<div class="inline">2:45</div>
-						</div>
-					</div>
-
-					<div
-						class="absolute bottom-8 right-8 bg-white w-14 h-14 rounded-full flex items-center justify-center shadow-lg cursor-pointer"
-					>
-						<div class="flex gap-1">
-							<div class="w-[3px] h-5 bg-indigo-900 rounded-full">
-							</div>
-							<div class="w-[3px] h-5 bg-indigo-900 rounded-full">
-							</div>
-						</div>
-					</div>
-				</div>
+				
+				<Sonando />
 
 				<div class="flex flex-col gap-4 flex-1">
 					<div
@@ -116,8 +79,18 @@ const { songs } = await response.json();
 					</div>
 				</div>
 
-				<div class="flex flex-row justify-between gap-4">
-					<div
+				<div class="flex flex-row flex-wrap justify-between gap-4">
+
+					{
+						songs.map(song => {
+							return (
+								<TarjetaMusica song={song} />
+							)
+						})
+					}
+
+
+					<!-- <div
 						class="flex flex-col gap-3 w-[15%] group cursor-pointer"
 					>
 						<div
@@ -237,7 +210,7 @@ const { songs } = await response.json();
 							<div class="text-[13px] font-bold">Pulse</div>
 							<p class="text-zinc-400 text-[11px]">Bonobo</p>
 						</div>
-					</div>
+					</div> -->
 				</div>
 			</div>
 
@@ -320,13 +293,13 @@ const { songs } = await response.json();
 					</div>
 				</div>
 			</div>
-			<div class="grid grid-cols-4 gap-4">
+			<!-- <div class="grid grid-cols-4 gap-4">
 				{
 					songs.map((song) => {
 						return <Musica song={song} />;
 					})
 				}
-			</div>
+			</div> -->
 		</div>
 	</section>
 </Layout>

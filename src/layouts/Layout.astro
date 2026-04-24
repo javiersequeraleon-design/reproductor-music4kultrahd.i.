@@ -13,6 +13,44 @@ import { Icon } from 'astro-icon/components'
 		<title>Player Music</title>
 	</head>
 	<body>
+		<header>
+			<button>Cambiar modo</button>
+			<script>
+				const button = document.querySelector("button");
+				button.addEventListener("click", () => {
+					document.documentElement.classList.toggle("dark");
+				});
+			</script>
+			</script>
+			<div>
+				<p>Player Music</p>
+			</div>
+			<div>
+				<a href="/">Home</a>
+			</div>
+			<div>
+				<div
+                    class="flex flex-row items-end gap-0 w-full max-w-md border-b border-zinc-700 pb-2"
+                >
+                    <div class="flex flex-col gap-3 flex-1">
+                        <div
+                            class="text-zinc-500 text-[10px] uppercase tracking-widest text-left font-sans"
+                        >
+                            Dirección de Correo
+                        </div>
+                        <input
+                            class="bg-transparent text-black outline-none font-sans w-full py-1"
+                        />
+                    </div>
+
+                    <div
+                        class="bg-[#ffffff]px-8 py-3 text-[10px] uppercase tracking-[0.2em] font-bold font-sans cursor-pointer rounded-sm mb-[-8px] text-black"
+                    >
+                        Suscribirse
+                    </div>
+                </div>
+			</div>
+		</header>
 		<div>
 			<slot />
 		</div>
@@ -63,27 +101,8 @@ import { Icon } from 'astro-icon/components'
 			</div>
 		</div>
 
-		 <audio autoplay id="lol" src=""></audio>
 	</body>
 </html>
 
 
-<script>
-window.addEventListener('playSong', (event) => {
-	const song = event.detail.song;
-	document.getElementById('album-art').src = song.album.image.url;
-	document.getElementById('title').textContent = song.title;
-	document.getElementById('artist').textContent = song.author.name;
-	document.getElementById('lol').src = song.audio.url;
-});
-</script>
 
-
-<style>
-	html,
-	body {
-		margin: 0;
-		width: 100%;
-		height: 100%;
-	}
-</style>
