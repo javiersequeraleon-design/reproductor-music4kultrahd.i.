@@ -10,11 +10,9 @@ import { Icon } from 'astro-icon/components'
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<link rel="icon" href="/favicon.ico" />
 		<meta name="generator" content={Astro.generator} />
-		<title>Player Music</title>
 	</head>
 	<body>
-		<header>
-			<button>Cambiar modo</button>
+		<header class="flex justify-between items-center p-6">
 			<script>
 				const button = document.querySelector("button");
 				button.addEventListener("click", () => {
@@ -23,33 +21,10 @@ import { Icon } from 'astro-icon/components'
 			</script>
 			</script>
 			<div>
-				<p>Player Music</p>
 			</div>
 			<div>
-				<a href="/">Home</a>
 			</div>
-			<div>
-				<div
-                    class="flex flex-row items-end gap-0 w-full max-w-md border-b border-zinc-700 pb-2"
-                >
-                    <div class="flex flex-col gap-3 flex-1">
-                        <div
-                            class="text-zinc-500 text-[10px] uppercase tracking-widest text-left font-sans"
-                        >
-                            Dirección de Correo
-                        </div>
-                        <input
-                            class="bg-transparent text-black outline-none font-sans w-full py-1"
-                        />
-                    </div>
-
-                    <div
-                        class="bg-[#ffffff]px-8 py-3 text-[10px] uppercase tracking-[0.2em] font-bold font-sans cursor-pointer rounded-sm mb-[-8px] text-black"
-                    >
-                        Suscribirse
-                    </div>
-                </div>
-			</div>
+			
 		</header>
 		<div>
 			<slot />
